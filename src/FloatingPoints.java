@@ -73,10 +73,11 @@ public class FloatingPoints {
         DecimalFormat resultDF = new DecimalFormat("#.########");
         double resultExponent = Math.pow(2, biasedExponent);
         double result = sign * resultExponent * fraction;
-        System.out.printf("%d * %.0f * %f = %s%n", sign, resultExponent, fraction, resultDF.format(result));
+        System.out.printf("%d * 2^%d * %f = %s%n",
+                sign, biasedExponent, fraction, resultDF.format(result));
     }
 
-    public static void main(String[] args) {
+    public static void run() {
         Scanner in = new Scanner(System.in);
         System.out.println("Please enter a 16-bit floating point binary value:");
         boolean validBits = false;
@@ -99,7 +100,7 @@ public class FloatingPoints {
 
         boolean validExponent = false;
         int exponentBits = 0;
-        while (!validExponent) {
+        do {
             try {
                 System.out.println("How many exponent bits?");
                 exponentBits = Integer.parseInt(in.nextLine());
@@ -111,9 +112,7 @@ public class FloatingPoints {
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input, please try again:");
             }
-        }
-
-        in.close();
+        } while (!validExponent);
 
         convertToDecimal(bits, exponentBits);
     }
