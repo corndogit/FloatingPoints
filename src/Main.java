@@ -58,7 +58,7 @@ public class Main {
                     for (Map.Entry<Character, Double> entry : charprob.entrySet()) {
                         char key = entry.getKey();
                         double value = entry.getValue();
-                        System.out.printf("%4s | %f%n", key, value);
+                        System.out.printf("%4s | %.3f%n", key, value);
                     }
                     break;
 
