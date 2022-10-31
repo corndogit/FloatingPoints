@@ -20,7 +20,7 @@ public class Encoding {
                 } else {
 
                     // a new character has been reached, so append the fragment to encodedPhrase
-                    if (fragment.length() < minLength) {
+                    if (fragment.length() <= minLength) {
                         encodedPhrase.append(fragment);
                         fragment.setLength(0);  // reset the fragment
                     } else {
